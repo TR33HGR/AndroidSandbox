@@ -2,9 +2,9 @@ package com.example.androidsandbox
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.TextView
-import com.android.volley.Request
-import com.android.volley.toolbox.StringRequest
+import org.json.JSONObject
 
 class DisplayMessageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,11 +13,13 @@ class DisplayMessageActivity : AppCompatActivity() {
 
         val textView = findViewById<TextView>(R.id.textView)
 
-        val url = "https://www.google.com"
+        val data = JSONObject(mapOf("source" to "ko", "target" to "en", "text" to "만나서 반갑습니다."));
+        Log.d(DEBUG, "%s".format(data.toString()))
 
-        val stringRequest = StringRequest(Request.Method.GET, url, { response ->
-            textView.text = "Response is: ${response.substring(0, 500)}"
-        }, { textView.text = "That didn't work!" })
-        MySingleton.getInstance(this).addToRequestQuese(stringRequest)
+        val request = PapagoJsonRequest(data, { response ->
+            textView.text = "Response is: %s".format(response.toString())
+        }, { error -> textView.text = "That didn't work! %s".format(error.toString()) })
+
+        MySingleton.getInstance(this).addToRequestQuese(request)
     }
 }
