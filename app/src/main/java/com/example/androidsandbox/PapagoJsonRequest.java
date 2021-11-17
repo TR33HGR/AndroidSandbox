@@ -33,11 +33,7 @@ public class PapagoJsonRequest extends JsonObjectRequest{
     @Nullable
     @Override
     protected Map<String, String> getParams() throws AuthFailureError {
-        Map params = new HashMap();
-        params.put("source", requestData.sourceLanguage);
-        params.put("target", requestData.targetLanguage);
-        params.put("text", requestData.textToTranslate);
-        return params;
+        return requestData.getDataMap();
     }
 
     @Override

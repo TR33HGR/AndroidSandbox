@@ -3,6 +3,9 @@ package com.example.androidsandbox;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class PapagoRequestData {
     public String sourceLanguage;
     public String targetLanguage;
@@ -25,4 +28,11 @@ public class PapagoRequestData {
         return "source=%s&target=%s&text=%s".format(sourceLanguage, targetLanguage, textToTranslate);
     }
 
+    public Map<String, String> getDataMap() {
+        Map<String, String> data = new HashMap<>();
+        data.put("source", sourceLanguage);
+        data.put("target", targetLanguage);
+        data.put("text", textToTranslate);
+        return data;
+    }
 }
