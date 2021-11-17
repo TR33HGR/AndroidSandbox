@@ -7,16 +7,16 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class PapagoJsonRequest extends JsonObjectRequest{
-    private PapagoRequestData requestData;
-
-    public PapagoJsonRequest(PapagoRequestData data, Response.Listener<JSONObject> listener, @Nullable Response.ErrorListener errorListener) {
-        super(Request.Method.POST, "https://openapi.naver.com/v1/papago/n2mt", null, listener, errorListener);
+    private final PapagoRequestData requestData;
+    public PapagoJsonRequest(PapagoRequestData data, Response.Listener<JSONObject> listener, @Nullable Response.ErrorListener errorListener) throws JSONException {
+        super(Request.Method.POST, "https://openapi.naver.com/v1/papago/n2mt", data.getData(), listener, errorListener);
         requestData = data;
     }
 

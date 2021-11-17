@@ -1,5 +1,8 @@
 package com.example.androidsandbox;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class PapagoRequestData {
     public String sourceLanguage;
     public String targetLanguage;
@@ -10,4 +13,12 @@ public class PapagoRequestData {
         targetLanguage = target;
         textToTranslate = text;
     }
+    public JSONObject getData() throws JSONException {
+        JSONObject data = new JSONObject();
+        data.put("source", sourceLanguage);
+        data.put("target", targetLanguage);
+        data.put("text", textToTranslate);
+        return data;
+    }
+
 }
