@@ -15,9 +15,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PapagoJsonRequest extends JsonObjectRequest{
+    private PapagoRequestData requestData;
 
-    public PapagoJsonRequest(JSONObject requestData, Response.Listener<JSONObject> listener, @Nullable Response.ErrorListener errorListener) {
-        super(Request.Method.POST, "https://openapi.naver.com/v1/papago/n2mt", requestData, listener, errorListener);
+    public PapagoJsonRequest(PapagoRequestData data, Response.Listener<JSONObject> listener, @Nullable Response.ErrorListener errorListener) {
+        super(Request.Method.POST, "https://openapi.naver.com/v1/papago/n2mt", null, listener, errorListener);
+        requestData = data;
+    }
+
+    @Nullable
+    @Override
+    protected Map<String, String> getParams() throws AuthFailureError {
+        Map params = new HashMap();
+        params.put("source", requestData.sourceLanguage);
+        params.put("target", requestData.targetLanguage);
+        params.put("text", requestData.textToTranslate);
+        return params;
     }
 
     @Override
