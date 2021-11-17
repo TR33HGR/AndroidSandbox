@@ -37,9 +37,10 @@ public class PapagoJsonRequest extends JsonObjectRequest{
     }
 
     @Override
-    public Map<java.lang.String, java.lang.String> getHeaders() throws AuthFailureError {
-        Map headers = new HashMap();
-        headers.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    public Map<String, String> getHeaders() throws AuthFailureError {
+        Map<String, String> headers = new HashMap<String, String>();
+        headers.put("Content-Type", "application/x-www-form-urlencoded");
+        headers.put("charset", "UTF-8");
         headers.put("X-Naver-Client-Id", "hY9VLNNfCMuQXzHuXsNg");
         headers.put("X-Naver-Client-Secret", "VmtfBzhWuf");
         return headers;
