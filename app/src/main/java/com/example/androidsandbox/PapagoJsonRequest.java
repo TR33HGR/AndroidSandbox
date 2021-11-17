@@ -1,7 +1,5 @@
 package com.example.androidsandbox;
 
-import android.util.Log;
-
 import androidx.annotation.Nullable;
 
 import com.android.volley.AuthFailureError;
@@ -38,7 +36,6 @@ public class PapagoJsonRequest extends JsonObjectRequest{
         headers.put("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
         headers.put("X-Naver-Client-Id", "hY9VLNNfCMuQXzHuXsNg");
         headers.put("X-Naver-Client-Secret", "VmtfBzhWuf");
-        Log.d("DEBUG", "%s".format(headers.toString()));
         return headers;
     }
 }
