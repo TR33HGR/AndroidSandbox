@@ -13,7 +13,7 @@ class DisplayMessageActivity : AppCompatActivity() {
 
         val textView = findViewById<TextView>(R.id.textView)
 
-        val data = PapagoRequestData("ko", "en", "만나서 반갑습니다.");
+        val data = PapagoRequestData("ko", "en", "만나서 반갑습니다.")
         Log.d(DEBUG, "%s".format(data.toString()))
 
         val request = PapagoJsonRequest(data, { response ->
