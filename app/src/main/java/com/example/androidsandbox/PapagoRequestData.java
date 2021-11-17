@@ -21,4 +21,8 @@ public class PapagoRequestData {
         return data;
     }
 
+    public String getHttpPostBody() {
+        return "source=%s&target=%s&text=%s".format(sourceLanguage, targetLanguage, textToTranslate);
+    }
+
 }

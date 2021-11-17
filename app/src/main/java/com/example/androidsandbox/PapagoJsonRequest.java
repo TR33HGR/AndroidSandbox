@@ -25,6 +25,11 @@ public class PapagoJsonRequest extends JsonObjectRequest{
         requestData = data;
     }
 
+    @Override
+    public byte[] getBody() {
+        return requestData.getHttpPostBody().getBytes();
+    }
+
     @Nullable
     @Override
     protected Map<String, String> getParams() throws AuthFailureError {
