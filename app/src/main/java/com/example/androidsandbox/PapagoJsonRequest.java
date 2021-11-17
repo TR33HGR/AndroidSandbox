@@ -3,6 +3,7 @@ package com.example.androidsandbox;
 import androidx.annotation.Nullable;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.toolbox.JsonObjectRequest;
@@ -17,6 +18,10 @@ public class PapagoJsonRequest extends JsonObjectRequest{
     private final PapagoRequestData requestData;
     public PapagoJsonRequest(PapagoRequestData data, Response.Listener<JSONObject> listener, @Nullable Response.ErrorListener errorListener) throws JSONException {
         super(Request.Method.POST, "https://openapi.naver.com/v1/papago/n2mt", data.getData(), listener, errorListener);
+        super.setRetryPolicy(new DefaultRetryPolicy(
+                DefaultRetryPolicy.DEFAULT_TIMEOUT_MS,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestData = data;
     }
 
